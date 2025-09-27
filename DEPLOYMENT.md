@@ -1,14 +1,14 @@
 # Product Recognition App
 
-An AI-powered product recognition application that uses YOLO object detection and Google's Gemini API to identify products from shelf images.
+An AI-powered product recognition application that uses Google's Gemini Vision API to identify products from shelf images.
 
 ## Features
 
 - 🖼️ Upload images of product shelves
-- 🎯 Automatic product detection using YOLOv11
-- 🤖 Product identification using Google Gemini AI
+- 🤖 Product identification using Google Gemini Vision AI
 - 📱 Responsive web interface
 - ⚡ Fast processing and results display
+- 💰 Free deployment on Vercel
 
 ## Tech Stack
 
@@ -19,10 +19,9 @@ An AI-powered product recognition application that uses YOLO object detection an
 - Framer Motion for animations
 
 ### Backend
-- Flask (Python)
-- YOLOv11 for object detection
-- Google Gemini API for product identification
-- OpenCV for image processing
+- Flask (Python) as serverless functions
+- Google Gemini Vision API for product identification
+- PIL for image processing
 
 ## Local Development
 
@@ -108,10 +107,11 @@ git push origin main
 
 ### Important Notes for Deployment
 
-- The backend runs as serverless functions on Vercel
-- The YOLO model file is included in the deployment
+- The backend runs as lightweight serverless functions on Vercel
+- Uses only Google Gemini Vision API - no heavy ML models
 - Environment variables must be set in Vercel dashboard
 - The frontend automatically detects production vs development environments
+- Optimized for memory efficiency and fast cold starts
 
 ## Project Structure
 
@@ -128,8 +128,7 @@ dotslash-repo/
 │   ├── utils/
 │   └── requirements.txt
 ├── api/                    # Serverless functions for production
-│   ├── detect.py           # Main API endpoint
-│   └── YOLOv11_SKU.pt     # YOLO model
+│   └── detect.py           # Main API endpoint (lightweight)
 ├── vercel.json             # Vercel configuration
 └── requirements.txt        # Python dependencies for serverless
 ```
