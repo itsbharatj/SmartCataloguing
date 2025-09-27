@@ -17,7 +17,12 @@ const HomePage = () => {
       const formData = new FormData();
       formData.append("image", file);
 
-      const response = await fetch("http://localhost:5000/api/detect", {
+      // Use production API endpoint or fallback to local development
+      const apiUrl = import.meta.env.PROD 
+        ? '/api/detect' 
+        : 'http://localhost:5001/api/detect';
+
+      const response = await fetch(apiUrl, {
         method: "POST",
         body: formData,
         mode: "cors",
